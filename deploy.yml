@@ -1,15 +1,15 @@
 - name: Install and run Docker container 
- hosts: webservers 
- become: yes 
- tasks: 
+  hosts: webservers 
+  become: yes 
+  tasks: 
    - name: Install Docker 
      apt: 
        update_cache: yes 
        name: docker.io 
 
    - name: Install pip 
-     apt: 
-       name: python3-pip 
+    apt: 
+      name: python3-pip 
 
    - name: Install docker module 
      pip: 
@@ -17,8 +17,8 @@
 
    - name: Login to Docker Hub 
      docker_login: 
-       username: "{{ dockerhub_username }}" 
-       password: "{{ dockerhub_password }}" 
+       username: "{{ DOCKEHUB_USERNAME }}" 
+       password: "{{ DOCKERHUB_PASSWORD }}" 
 
    - name: Pull Docker image 
      docker_image: 

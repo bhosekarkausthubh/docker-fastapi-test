@@ -27,8 +27,8 @@ pipeline {
         } 
         stage('Delete Docker container') { 
              steps { 
-        sh "docker stop dockerjenkins_container || true" 
-        sh "docker rm dockerjenkins_container || true" 
+        sh "docker stop docker-fastapi-test_container || true" 
+        sh "docker rm docker-fastapi-test_container || true" 
     } 
 } 
         stage('Deploy image') { 

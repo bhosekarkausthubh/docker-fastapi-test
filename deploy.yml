@@ -1,7 +1,8 @@
 - name: Install and run Docker container 
   hosts: webservers 
   become: yes 
-  tasks: 
+
+ tasks: 
    - name: Install Docker 
      apt: 
        update_cache: yes 
@@ -9,39 +10,46 @@
 
    - name: Install pip 
      apt: 
-      name: python3-pip 
-
+       name: python3-pip 
+ 
    - name: Install docker module 
      pip: 
-      name: docker 
+       name: docker  
 
    - name: Login to Docker Hub 
      docker_login: 
-       username: "{{ DOCKEHUB_USERNAME }}" 
+       username: "{{ DOCKERHUB_USERNAME }}" 
        password: "{{ DOCKERHUB_PASSWORD }}" 
 
    - name: Pull Docker image 
      docker_image: 
        name: kausthubhbhosekar/docker-fastapi-test:latest 
-       source: pull 
- 
+       source: pull  
+
    - name: Run Docker container 
      docker_container: 
        name: my-container-ansible-deploy 
-       image: kausthubhbhosekar/docker-fastapi-test:latest:latest 
+       image: kausthubhbhosekar/docker-fastapi-test:latest 
        state: started 
        ports: 
          - "80:8000"          
+
      register: container_info 
 
+ 
+
+ 
+
    - name: Fetch container logs 
+
      command: "docker logs {{ container_info.container.Id }}" 
+
      register: container_logs 
 
+ 
+
    - name: Display container logs 
+
      debug: 
+
        var: container_logs.stdout_lines 
-
- 
-
- 

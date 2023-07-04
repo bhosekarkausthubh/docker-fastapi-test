@@ -2,7 +2,7 @@ webservers:
  hosts: 
    54.208.66.6: 
      ansible_user: ubuntu 
-     ansible_ssh_private_key_file: /home/ubuntu/deploy.pem 
+     ansible_ssh_private_key_file: /home/ubuntu/ansible.pem 
 
  vars: 
    dockerhub_username: "{{ lookup('env', 'DOCKERHUB_USERNAME') }}" 

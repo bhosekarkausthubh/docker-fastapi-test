@@ -22,13 +22,13 @@
 
    - name: Pull Docker image 
      docker_image: 
-       name: ayushcloudggn/dockerjenkins:latest 
+       name: kausthubhbhosekar/docker-fastapi-test:latest 
        source: pull 
 
    - name: Run Docker container 
      docker_container: 
        name: my-container-ansible-deploy 
-       image: ayushcloudggn/dockerjenkins:latest 
+       image: kausthubhbhosekar/docker-fastapi-test:latest 
        state: started 
        ports: 
          - "8000:8000"          

@@ -29,8 +29,8 @@ pipeline {
              steps { 
         sh "docker stop docker-fastapi-test_container || true" 
         sh "docker rm docker-fastapi-test_container || true" 
-    } 
-} 
+      } 
+   } 
 
         stage('Deploy image') { 
             steps { 
@@ -43,20 +43,11 @@ pipeline {
             } 
         } 
         
-        stage('Install Docker On Server') { 
+        stage('Deploy Docker container') { 
              steps { 
                ansiblePlaybook(inventory: 'inventory.yml', playbook: 'deploy.yml') 
         } 
-    } 
-  
-       stage('Pull Image') { 
-            steps { 
-        sshagent(credentials: ['my-ssh-key']) { 
-            sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@44.211.146.68 sudo docker pull kausthubhbhosekar/docker-fastapi-test:latest' 
-
-            } 
-          }  
-        } 
+    }  
 
         stage('Run App') {
             steps {

@@ -1,9 +1,7 @@
 webservers: 
  hosts: 
-   54.208.66.6: 
+  44.211.146.68: 
      ansible_user: ubuntu 
      ansible_ssh_private_key_file: /home/ubuntu/ansible.pem 
 
- vars: 
-   dockerhub_username: "{{ lookup('env', 'DOCKERHUB_USERNAME') }}" 
-   dockerhub_password: "{{ lookup('env', 'DOCKERHUB_PASSWORD') }}" 
+

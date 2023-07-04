@@ -28,13 +28,12 @@
        state: started 
        ports: 
          - "8000:8000"          
-
      register: container_info 
 
    - name: Fetch container logs 
      command: "docker logs {{ container_info.container.Id }}" 
      register: container_logs 
 
-   - name: Display container logs 
-     debug: 
-       var: container_logs.stdout_lines 
+    - name: Display container logs 
+      debug: 
+       var: container_logs.stdout_lines    

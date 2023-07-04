@@ -24,29 +24,14 @@ pipeline {
                     dockerImage.push() 
                 } 
             } 
-        } 
-        stage('Delete Docker container') { 
-             steps { 
-        sh "docker stop docker-fastapi-test_container || true" 
-        sh "docker rm docker-fastapi-test_container || true" 
-    } 
-} 
-        stage('Deploy image') { 
-            steps { 
-                sh "docker run -d --name docker-fastapi-test_container kausthubhbhosekar/docker-fastapi-test:latest" 
-            } 
-        } 
-        stage('Check Docker logs') { 
-            steps { 
-                sh "docker logs docker-fastapi-test_container" 
-            } 
-        } 
+        }  
+  
         stage('Deploy Docker container') { 
              steps { 
                ansiblePlaybook(inventory: 'inventory.yml', playbook: 'deploy.yml') 
         } 
-} 
     } 
+  }  
 } 
 
  

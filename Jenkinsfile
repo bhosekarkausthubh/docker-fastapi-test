@@ -48,14 +48,6 @@ pipeline {
                ansiblePlaybook(inventory: 'inventory.yml', playbook: 'deploy.yml') 
         } 
     }  
-   
-        
-        stage('Keep Container Running') { 
-             steps { sshagent(credentials: ['my-ssh-key']) { 
-              sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@44.211.146.68 docker run -d --name my-container-ansible-deploy_container kausthubhbhosekar/docker-fastapi-test:latest' 
-
-          } 
-       } 
-     }       
+          
   }
 } 

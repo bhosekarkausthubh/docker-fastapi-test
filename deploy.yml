@@ -6,10 +6,6 @@
      apt: 
        update_cache: yes 
        name: docker.io 
-
-   - name: Install pip 
-     apt: 
-       name: python3-pip 
  
    - name: Install docker module 
      pip: 
@@ -31,7 +27,7 @@
        image: kausthubhbhosekar/docker-fastapi-test:latest 
        state: started 
        ports: 
-         - "80:8000"          
+         - "8000:8000"          
 
      register: container_info 
 

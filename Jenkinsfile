@@ -49,14 +49,5 @@ pipeline {
         } 
     }  
 
-        stage('Run App') {
-            steps {
-        sshagent(credentials: ['my-ssh-key']) {
-            sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@44.211.146.68 sudo docker run -d --name docker-fastapi-test_container kausthubhbhosekar/docker-fastapi-test:latest'
-
-           }
-        }
-      }   
-
   }
 } 

@@ -1,4 +1,4 @@
-;- name: Install and run Docker container 
+- name: Install and run Docker container 
   hosts: webservers 
   become: yes 
   tasks: 

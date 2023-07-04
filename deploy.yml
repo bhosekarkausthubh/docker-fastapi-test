@@ -17,8 +17,8 @@
 
    - name: Login to Docker Hub 
      docker_login: 
-       username: "{{ $DOCKERHUB_USERNAME }}" 
-       password: "{{ $DOCKERHUB_PASSWORD }}" 
+       username: "{{ dockerhub_username }}" 
+       password: "{{ dockerhub_password }}" 
 
    - name: Pull Docker image 
      docker_image: 

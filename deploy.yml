@@ -1,7 +1,7 @@
-- name: Install and run Docker container 
-   hosts: webservers 
-   become: yes 
-   tasks: 
+;- name: Install and run Docker container 
+  hosts: webservers 
+  become: yes 
+  tasks: 
    - name: Install Docker 
      apt: 
        update_cache: yes 

@@ -34,7 +34,7 @@ pipeline {
 
         stage('Deploy image') { 
             steps { 
-                sh "docker run -d --name docker-fastapi-test_container ayushcloudggn/dockerjenkins:latest" 
+                sh "docker run -d --name docker-fastapi-test_container kausthubhbhosekar/docker-fastapi-test:latest" 
             } 
         } 
         stage('Check Docker logs') { 

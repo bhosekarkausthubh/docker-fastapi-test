@@ -1,7 +1,6 @@
 - name: Install and run Docker container 
-   hosts: webservers 
-   become: yes 
-  
+  hosts: webservers 
+  become: yes 
   tasks: 
    - name: Install Docker 
      apt: 
@@ -23,5 +22,5 @@
 
    - name: Pull Docker image 
      docker_image: 
-       name: ayushcloudggn/dockerjenkins:latest 
+       name: kausthubhbhosekar/docker-fastapi-test:latest 
        source: pull              

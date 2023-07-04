@@ -6,9 +6,9 @@
      apt: 
        update_cache: yes 
        name: docker.io 
-   
+
    - name: Install pip 
-     apt: 
+     apt:
        name: python3-pip 
 
    - name: Install docker module 
@@ -16,11 +16,32 @@
        name: docker 
 
    - name: Login to Docker Hub 
-       docker_login: 
-         username: "{{ dockerhub_username }}" 
-         password: "{{ dockerhub_password }}" 
+     docker_login: 
+       username: "{{ dockerhub_username }}" 
+       password: "{{ dockerhub_password }}" 
 
    - name: Pull Docker image 
      docker_image: 
-       name: kausthubhbhosekar/docker-fastapi-test:latest 
-       source: pull              
+       name: ayushcloudggn/dockerjenkins:latest 
+       source: pull 
+
+   - name: Run Docker container 
+     docker_container: 
+       name: my-container-ansible-deploy 
+       image: ayushcloudggn/dockerjenkins:latest 
+       state: started 
+       ports: 
+         - "8000:8000"          
+     register: container_info 
+
+   - name: Fetch container logs 
+     command: "docker logs {{ container_info.container.Id }}" 
+     register: container_logs 
+
+ 
+
+   - name: Display container logs 
+     debug: 
+       var: container_logs.stdout_lines 
+
+        

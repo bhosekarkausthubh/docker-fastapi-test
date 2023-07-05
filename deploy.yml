@@ -29,7 +29,10 @@
      docker_container: 
        name: my-container-ansible-deploy 
        image: kausthubhbhosekar/docker-fastapi-test:latest 
-       state: started 
+       state: started
+       interactive: yes
+       detach: yes
+       tty: yes
        ports: 
          - "8000:8000"          
      register: container_info 
